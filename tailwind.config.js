@@ -11,6 +11,9 @@ module.exports = {
         bybikeRed: '#E35959',
         bybikeBlack: '#0B0E13',
         bybikeBlue: '#00A29D',
+        bbSurface: '#F5F7F7',
+        bbMuted: '#6B7280',
+        bbBorder: '#E5E7EB',
       },
       fontFamily: {
         montserrat: ['var(--font-montserrat)'],

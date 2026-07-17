@@ -21,17 +21,17 @@ const page = () => {
       <section className='flex justify-center bg-gradient-to-b from-[#00A29D] to-white'>
         <div className='relative w-[96%] md:w-11/12 xl:w-[80rem] h-[34rem] sm:h-[40rem] pt-12'>
           <div className='text-3xl sm:text-5xl lg:text-6xl text-center md:text-start font-medium'>
-            <h2 className='underline decoration-bybikeRed md:no-underline'>
+            <h1 className='underline decoration-bybikeRed md:no-underline'>
               FROM <br className='hidden md:block' />
               <span className='underline decoration-bybikeRed'>BACKSTAGE</span>
-            </h2>
-            <h2 className='underline flex justify-center md:block decoration-bybikeBlue md:no-underline'>
-              <h3 className='ml-[5px]'>TO </h3>
-              <h2 className='md:hidden'>&nbsp; </h2>
+            </h1>
+            <p className='underline flex justify-center md:block decoration-bybikeBlue md:no-underline'>
+              <span className='ml-[5px]'>TO </span>
+              <span className='md:hidden'>&nbsp;</span>
               <span className='underline decoration-bybikeBlue'>
                 FRONTSTAGE
               </span>
-            </h2>
+            </p>
           </div>
           <h3 className='italic text-center md:text-start lg:text-xl tracking-wider mt-4'>
             <span className='font-semibold'>Turnkey</span> solution for your
@@ -65,57 +65,46 @@ const page = () => {
 
       {/* FRONT STAGE */}
       <div ref={frontRef} className='h-[5rem]'></div>
-      <h2 className='tracking-wider text-center text-4xl pt-6 font-medium'>
-        FRONT-STAGE
+      <p className='bb-label text-center pt-6'>Platform</p>
+      <h2 className='bb-title text-center text-3xl sm:text-4xl mt-2'>
+        Front-stage
       </h2>
-      <hr className='border border-bybikeBlue mt-4' />
-      <section className='-mt-12 sm:mt-12 flex justify-center items-center md:items-start md:flex-row gap-6 lg:gap-20'>
-        <div className='w-[96%] lg:w-[60rem] xl:w-[80rem] gap-12 lg:gap-2 flex flex-col-reverse items-center lg:flex-row justify-between'>
-          <div className=''>
-            <h2 className='text-4xl hidden lg:block mb-12 font-semibold mt-24'>
-              <span className='text-bybikeBlue '>Rider </span>App
+      <div className='h-px bg-bybikeBlue/40 mt-4 max-w-xs mx-auto' />
+      <section className='mt-10 sm:mt-14 flex justify-center px-4 pb-8'>
+        <div className='w-full max-w-6xl xl:max-w-7xl grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] gap-10 lg:gap-14 xl:gap-20 items-center'>
+          <div className='order-2 lg:order-1 flex flex-col items-center lg:items-start'>
+            <p className='bb-label mb-2'>Product</p>
+            <h2 className='bb-title text-3xl sm:text-4xl mb-6 sm:mb-8'>
+              <span className='text-bybikeBlue'>Rider</span> App
             </h2>
-            <div className='flex justify-center sm:justify-start text-xs sm:text-base gap-1 sm:gap-3 mb-10'>
-              <button
-                onClick={() => setActiveIndex(0)}
-                className={`${
-                  activeIndex === 0
-                    ? 'border border-black'
-                    : 'text-white bg-bybikeBlack'
-                } py-1 px-2 rounded-xl `}
-              >
-                Tailor made
-              </button>
-              <button
-                onClick={() => setActiveIndex(1)}
-                className={`${
-                  activeIndex === 1
-                    ? 'border border-black'
-                    : 'text-white bg-bybikeBlack'
-                } py-1 px-2 rounded-xl `}
-              >
-                Online Invoice
-              </button>
-              <button
-                onClick={() => setActiveIndex(2)}
-                className={`${
-                  activeIndex === 2
-                    ? 'border border-black'
-                    : 'text-white bg-bybikeBlack'
-                } py-1 px-2 rounded-xl `}
-              >
-                Vehicle
-              </button>
-              <button
-                onClick={() => setActiveIndex(3)}
-                className={`${
-                  activeIndex === 3
-                    ? 'border border-black'
-                    : 'text-white bg-bybikeBlack'
-                } py-1 px-2 rounded-xl `}
-              >
-                Payment
-              </button>
+
+            <div
+              className='rider-tabs flex flex-wrap justify-center lg:justify-start gap-2 mb-8 sm:mb-10'
+              role='tablist'
+              aria-label='Rider App features'
+            >
+              {[
+                'Tailor made',
+                'Online Invoice',
+                'Vehicle',
+                'Payment',
+              ].map((label, index) => {
+                const isActive = activeIndex === index;
+                return (
+                  <button
+                    key={label}
+                    type='button'
+                    role='tab'
+                    aria-selected={isActive}
+                    onClick={() => setActiveIndex(index)}
+                    className={`bb-pill rider-tab ${
+                      isActive ? 'bb-pill-active' : ''
+                    }`}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
             </div>
 
             <Carousel
@@ -124,23 +113,27 @@ const page = () => {
             />
           </div>
 
-          <div
-            className={`${
-              activeIndex === activeIndexWithDelay ? 'opacity-100' : 'opacity-0'
-            } transition-all duration-200 flex justify-between gap-2 md:gap-4 lg:gap-2 mt-20 sm:mt-36 h-[20rem] sm:h-[34rem]`}
-          >
-            <div className='flex flex-col justify-center'>
+          <div className='order-1 lg:order-2 rider-phones relative flex justify-center items-end min-h-[22rem] sm:min-h-[34rem]'>
+            <div
+              aria-hidden
+              className='absolute inset-[12%] sm:inset-[8%] rounded-[2rem] bg-gradient-to-br from-bybikeBlue/15 via-[#F3F6F6] to-transparent'
+            />
+            <div
+              className={`relative z-[1] flex items-end justify-center gap-3 sm:gap-5 transition-[opacity,filter,transform] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] ${
+                activeIndex === activeIndexWithDelay
+                  ? 'opacity-100 blur-0 translate-y-0'
+                  : 'opacity-0 blur-[2px] translate-y-2'
+              }`}
+            >
               <img
-                className='w-[8rem] sm:w-[14rem] h-auto'
+                className='rider-phone w-[7.5rem] sm:w-[12rem] md:w-[13.5rem] h-auto drop-shadow-xl -rotate-2'
                 src={`/software_ss${activeIndexWithDelay}_1.png`}
-                alt='ss1'
+                alt='Rider app map and vehicle selection screen'
               />
-            </div>
-            <div className='flex flex-col justify-center'>
               <img
-                className='w-[8rem] sm:w-[14rem]'
+                className='rider-phone w-[7.5rem] sm:w-[12rem] md:w-[13.5rem] h-auto drop-shadow-xl rotate-2 translate-y-4 sm:translate-y-8'
                 src={`/software_ss${activeIndexWithDelay}_2.png`}
-                alt='ss1'
+                alt='Rider app active ride screen'
               />
             </div>
           </div>
@@ -149,10 +142,11 @@ const page = () => {
 
       {/* BACK STAGE */}
       <div ref={backRef} className='h-[5rem]'></div>
-      <h2 className='tracking-wider text-center text-4xl mt-4 pt-6 font-medium'>
-        BACK-STAGE
+      <p className='bb-label text-center mt-8 pt-6'>Operations</p>
+      <h2 className='bb-title text-center text-3xl sm:text-4xl mt-2'>
+        Back-stage
       </h2>
-      <hr className='border border-bybikeRed mt-4 mb-24' />
+      <div className='h-px bg-bbBorder mt-4 mb-16 max-w-xs mx-auto' />
       <section className='flex justify-center'>
         <div className='w-[96%] sm:w-[90%] lg:w-[40rem] flex md:block flex-col items-center xl:w-[60rem]'>
           <h2 className='text-2xl sm:text-3xl text-center md:text-start md:text-4xl mb-2 font-semibold'>
@@ -225,36 +219,35 @@ const page = () => {
               <li>Marketing Management</li>
             </ul>
           </div>
-          <div className='p-2 md:p-6 py-10 md:py-16 rounded-3xl bg-[#ECECEC]'>
-            <h2 className='text-2xl md:text-4xl text-center font-medium mb-1'>
-              COMING SOON
+          <div className='bb-card p-6 md:p-8 py-10 md:py-12'>
+            <p className='bb-label text-center mb-2'>Waitlist</p>
+            <h2 className='bb-title text-2xl md:text-3xl text-center mb-1'>
+              Coming soon
             </h2>
-            <h3 className='text-sm md:text-base text-center mb-8'>
-              Notify Me When It's Ready
+            <h3 className='bb-subtitle text-sm md:text-base text-center mb-6'>
+              Notify me when it&apos;s ready
             </h3>
-            <div className='flex h-12 items-center justify-center rounded-md overflow-hidden'>
+            <div className='flex flex-col sm:flex-row gap-2 items-stretch justify-center'>
               <input
-                type='text'
+                type='email'
                 placeholder='Enter a valid e-mail address'
-                className='focus:outline-none w-[14rem] px-4 h-full text-xs md:text-sm'
+                className='bb-input w-full sm:w-[16rem] text-sm'
               />
-              <button className='bg-black h-full min-w-[6rem] text-sm md:text-base px-1 md:px-4 text-white'>
-                NOTIFY ME
+              <button type='button' className='bb-btn bb-btn-primary text-sm'>
+                Notify me
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      <section className='flex flex-col gap-4 my-24 items-center'>
-        <h2 className='text-xl md:text-3xl font-semibold'>
-          OUR TEAM IS HERE TO <span className='text-bybikeBlue'>HELP</span>
+      <section className='flex flex-col gap-3 my-24 items-center px-4'>
+        <p className='bb-label'>Support</p>
+        <h2 className='bb-title text-xl md:text-3xl text-center'>
+          Our team is here to <span className='text-bybikeBlue'>help</span>
         </h2>
-        <Link
-          href='/demo'
-          className='bg-bybikeBlue py-2 px-4 rounded-xl text-white'
-        >
-          Get In Touch
+        <Link href='/demo' className='bb-btn bb-btn-primary'>
+          Get in touch
         </Link>
       </section>
     </main>

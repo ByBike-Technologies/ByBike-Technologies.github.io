@@ -19,11 +19,8 @@ export default function Home() {
                 <h3 className='text-white text-2xl sm:text-base my-12 sm:my-8'>
                   All in one micromobility solutions.
                 </h3>
-                <Link
-                  href='/demo'
-                  className='bg-bybikeBlue p-4 rounded-lg text-white'
-                >
-                  REQUEST A DEMO
+                <Link href='/demo' className='bb-btn bb-btn-teal'>
+                  Request a demo
                 </Link>
               </div>
             </div>
@@ -64,11 +61,8 @@ export default function Home() {
           <span className='font-medium italic'>fleet management</span> to{' '}
           <span className='font-medium italic'>scaling</span>.
         </h3>
-        <Link
-          href='/demo'
-          className='bg-bybikeBlue text-white py-3 px-8 rounded-lg'
-        >
-          Request a Demo
+        <Link href='/demo' className='bb-btn bb-btn-primary'>
+          Request a demo
         </Link>
       </section>
 
@@ -78,11 +72,11 @@ export default function Home() {
           <img src='/landing_steps.png' className='w-11/12' alt='steps' />
           <div className='flex gap-1 justify-between w-[95%]'>
             <div className='-mt-28 w-[152px] lg:w-48'>
-              <h2 className='text-[#00BBF2] lg:text-2xl font-bold mb-4'>
+              <h2 className='text-bybikeBlue lg:text-2xl font-bold mb-4'>
                 ADVICE
               </h2>
               <div className='flex gap-2'>
-                <div className='border border-[#00BBF2]'></div>
+                <div className='border border-bybikeBlue'></div>
                 <p className='text-sm lg:text-base leading-5'>
                   We prepare an optimized operational plan, together we ensure
                   you reach maximum efficiency.
@@ -90,11 +84,11 @@ export default function Home() {
               </div>
             </div>
             <div className='w-[152px] lg:w-48'>
-              <h2 className='text-[#565CA9] lg:text-2xl font-bold mb-4'>
+              <h2 className='text-bybikeBlack lg:text-2xl font-bold mb-4'>
                 HARDWARE
               </h2>
               <div className='flex gap-2'>
-                <div className='border border-[#565CA9]'></div>
+                <div className='border border-bbBorder'></div>
                 <p className='text-sm lg:text-base leading-5'>
                   We assist you in the supply of necessary tools and equipment
                   for the operation.
@@ -102,11 +96,11 @@ export default function Home() {
               </div>
             </div>
             <div className='-mt-28 w-[152px] lg:w-48'>
-              <h2 className='text-[#7D53A2] lg:text-2xl font-bold mb-4'>
+              <h2 className='text-bybikeBlue lg:text-2xl font-bold mb-4'>
                 SOFTWARE
               </h2>
               <div className='flex w-40 lg:w-48 gap-2'>
-                <div className='border border-[#7D53A2]'></div>
+                <div className='border border-bybikeBlue'></div>
                 <p className='text-sm lg:text-base leading-5'>
                   We start your operation quickly with our end-to-end software
                   infrastructure.
@@ -114,11 +108,11 @@ export default function Home() {
               </div>
             </div>
             <div className='w-[152px] lg:w-48'>
-              <h2 className='text-[#EE4E9C] lg:text-2xl font-bold mb-4'>
+              <h2 className='text-bybikeBlack lg:text-2xl font-bold mb-4'>
                 MANAGE
               </h2>
               <div className='flex gap-2'>
-                <div className='border border-[#EE4E9C]'></div>
+                <div className='border border-bbBorder'></div>
                 <p className='text-sm lg:text-base leading-5'>
                   After the installation is completely finished, we assist in
                   optimizing the operation for the first 2-3 weeks.
@@ -126,11 +120,11 @@ export default function Home() {
               </div>
             </div>
             <div className='-mt-28 w-[152px] lg:w-48'>
-              <h2 className='text-[#EF4962] lg:text-2xl font-bold mb-4'>
+              <h2 className='text-bybikeBlue lg:text-2xl font-bold mb-4'>
                 SCALE
               </h2>
               <div className='flex w-40 lg:w-48 gap-2'>
-                <div className='border border-[#EF4962]'></div>
+                <div className='border border-bybikeBlue'></div>
                 <p className='text-sm lg:text-base leading-5'>
                   We support the regulatory and efficient scaling of your
                   operation.
@@ -151,8 +145,8 @@ export default function Home() {
               alt='step_01'
             />
             <div className='text-center -mt-6 w-10/12 sm:w-8/12'>
-              <h2 className='text-2xl font-bold text-[#00BBF2]'>ADVICE</h2>
-              <hr className='border border-[#00BBF2] mb-2' />
+              <h2 className='text-2xl font-bold text-bybikeBlue'>ADVICE</h2>
+              <hr className='border border-bybikeBlue mb-2' />
               <p className='text-xl'>
                 We prepare an optimized operational plan, together we ensure you
                 reach maximum efficiency.
@@ -166,8 +160,8 @@ export default function Home() {
               alt='step_02'
             />
             <div className='text-center -mt-6 w-10/12 sm:w-8/12'>
-              <h2 className='text-2xl font-bold text-[#565CA9]'>HARDWARE</h2>
-              <hr className='border border-[#565CA9] mb-2' />
+              <h2 className='text-2xl font-bold text-bybikeBlack'>HARDWARE</h2>
+              <hr className='border border-bbBorder mb-2' />
               <p className='text-xl'>
                 We assist you in the supply of necessary tools and equipment for
                 the operation.
@@ -181,8 +175,8 @@ export default function Home() {
               alt='step_03'
             />
             <div className='text-center -mt-6 w-10/12 sm:w-8/12'>
-              <h2 className='text-2xl font-bold text-[#7D53A2]'>SOFTWARE</h2>
-              <hr className='border border-[#7D53A2] mb-2' />
+              <h2 className='text-2xl font-bold text-bybikeBlue'>SOFTWARE</h2>
+              <hr className='border border-bybikeBlue mb-2' />
               <p className='text-xl'>
                 We start your operation quickly with our end-to-end software
                 infrastructure.
@@ -196,8 +190,8 @@ export default function Home() {
               alt='step_04'
             />
             <div className='text-center -mt-6 w-10/12 sm:w-8/12'>
-              <h2 className='text-2xl font-bold text-[#EE4E9C]'>MANAGE</h2>
-              <hr className='border border-[#EE4E9C] mb-2' />
+              <h2 className='text-2xl font-bold text-bybikeBlack'>MANAGE</h2>
+              <hr className='border border-bbBorder mb-2' />
               <p className='text-xl'>
                 After the installation is completely finished, we assist in
                 optimizing the operation for the first 2-3 weeks.
@@ -211,8 +205,8 @@ export default function Home() {
               alt='step_05'
             />
             <div className='text-center -mt-6 w-10/12 sm:w-8/12'>
-              <h2 className='text-2xl font-bold text-[#EF4962]'>SCALE</h2>
-              <hr className='border border-[#EF4962] mb-2' />
+              <h2 className='text-2xl font-bold text-bybikeBlue'>SCALE</h2>
+              <hr className='border border-bybikeBlue mb-2' />
               <p className='text-xl'>
                 We support the regulatory and efficient scaling of your
                 operation.
@@ -291,15 +285,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className='flex mt-20 md:mt-40 mb-24 flex-col items-center gap-4'>
-        <h2 className='text-xl sm:text-2xl md:text-4xl font-bold'>
-          OUR TEAM IS HERE TO <span className='text-bybikeBlue'>HELP</span>
+      <section className='flex mt-20 md:mt-40 mb-24 flex-col items-center gap-4 px-4'>
+        <p className='bb-label'>Support</p>
+        <h2 className='bb-title text-xl sm:text-2xl md:text-4xl text-center'>
+          Our team is here to <span className='text-bybikeBlue'>help</span>
         </h2>
-        <Link
-          href='/demo'
-          className='bg-bybikeBlue text-white px-10 py-3 rounded-lg'
-        >
-          Get In Touch
+        <Link href='/demo' className='bb-btn bb-btn-primary'>
+          Get in touch
         </Link>
       </section>
     </main>

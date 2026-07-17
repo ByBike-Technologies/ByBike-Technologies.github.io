@@ -47,10 +47,11 @@ const page = () => {
   };
 
   return (
-    <main className='bg-[url(/demo_background.png)] tracking-widest bg-cover flex justify-center py-24'>
-      <div className='bg-bybikeBlack shadow-2xl w-11/12 md:w-[35rem] rounded-xl text-white px-4 md:px-12 py-16'>
-        <h2 className='text-4xl mb-10'>
-          Let's Get <span className='text-bybikeBlue'>Going.</span>
+    <main className='bg-bbSurface flex justify-center py-16 sm:py-24 px-4'>
+      <div className='bb-card w-full max-w-xl px-5 sm:px-10 py-12 sm:py-14 text-bybikeBlack'>
+        <p className='bb-label mb-3'>Demo request</p>
+        <h2 className='bb-title text-3xl sm:text-4xl mb-8'>
+          Let&apos;s get <span className='text-bybikeBlue'>going.</span>
         </h2>
         <Formik
           initialValues={{
@@ -81,7 +82,7 @@ const page = () => {
                     value={props.values.firstName}
                     name='firstName'
                     type='text'
-                    className='bg-[#EAEAEA]/20 w-full md:w-56 focus:outline-none rounded-md p-1 px-2'
+                    className='bb-input w-full md:w-56'
                   />
                 </div>
                 <div>
@@ -94,7 +95,7 @@ const page = () => {
                     value={props.values.lastName}
                     name='lastName'
                     type='text'
-                    className='bg-[#EAEAEA]/20 w-full md:w-56 focus:outline-none rounded-md p-1 px-2'
+                    className='bb-input w-full md:w-56'
                   />
                 </div>
                 <div>
@@ -107,7 +108,7 @@ const page = () => {
                     value={props.values.city}
                     name='city'
                     type='text'
-                    className='bg-[#EAEAEA]/20 w-full md:w-56 focus:outline-none rounded-md p-1 px-2'
+                    className='bb-input w-full md:w-56'
                   />
                 </div>
                 <div>
@@ -120,7 +121,7 @@ const page = () => {
                     value={props.values.country}
                     name='country'
                     type='text'
-                    className='bg-[#EAEAEA]/20 w-full md:w-56 focus:outline-none rounded-md p-1 px-2'
+                    className='bb-input w-full md:w-56'
                   />
                 </div>
                 <div className='md:col-span-2'>
@@ -134,7 +135,7 @@ const page = () => {
                     value={props.values.numberOfVehicles}
                     name='numberOfVehicles'
                     type='text'
-                    className='bg-[#EAEAEA]/20 w-full focus:outline-none rounded-md p-1 px-2'
+                    className='bb-input w-full'
                   />
                 </div>
                 <div>
@@ -147,7 +148,7 @@ const page = () => {
                     value={props.values.email}
                     name='email'
                     type='text'
-                    className='bg-[#EAEAEA]/20 w-full md:w-56 focus:outline-none rounded-md p-1 px-2'
+                    className='bb-input w-full md:w-56'
                   />
                 </div>
                 <div>
@@ -160,7 +161,7 @@ const page = () => {
                     value={props.values.phone}
                     name='phone'
                     type='text'
-                    className='bg-[#EAEAEA]/20 w-full md:w-56 focus:outline-none rounded-md p-1 px-2'
+                    className='bb-input w-full md:w-56'
                   />
                 </div>
                 <div className='md:col-span-2'>
@@ -174,7 +175,7 @@ const page = () => {
                     value={props.values.stage}
                     name='stage'
                     type='text'
-                    className='bg-[#EAEAEA]/20 w-full focus:outline-none rounded-md p-1 px-2'
+                    className='bb-input w-full'
                   />
                 </div>
                 <div className='col-span-2'>
@@ -187,33 +188,27 @@ const page = () => {
                     onClick={() =>
                       handleClick('E-Scooter', props.setFieldValue)
                     }
-                    className={`${
-                      selected.includes('E-Scooter')
-                        ? 'bg-bybikeBlue'
-                        : 'bg-[#EAEAEA]/20'
-                    } w-full md:w-56 flex justify-start pl-2 py-1 mb-1 rounded-md`}
+                    className={`bb-pill mb-2 w-full md:w-56 justify-start ${
+                      selected.includes('E-Scooter') ? 'bb-pill-active' : ''
+                    }`}
                   >
                     E-Scooter
                   </button>
                   <button
                     type='button'
                     onClick={() => handleClick('E-Bike', props.setFieldValue)}
-                    className={`${
-                      selected.includes('E-Bike')
-                        ? 'bg-bybikeBlue'
-                        : 'bg-[#EAEAEA]/20'
-                    } w-full md:w-56 flex justify-start pl-2 py-1 mb-1 rounded-md`}
+                    className={`bb-pill mb-2 w-full md:w-56 justify-start ${
+                      selected.includes('E-Bike') ? 'bb-pill-active' : ''
+                    }`}
                   >
                     E-Bike
                   </button>
                   <button
                     type='button'
                     onClick={() => handleClick('Mix', props.setFieldValue)}
-                    className={`${
-                      selected.includes('Mix')
-                        ? 'bg-bybikeBlue'
-                        : 'bg-[#EAEAEA]/20'
-                    } w-full md:w-56 flex justify-start pl-2 py-1 mb-1 rounded-md`}
+                    className={`bb-pill mb-2 w-full md:w-56 justify-start ${
+                      selected.includes('Mix') ? 'bb-pill-active' : ''
+                    }`}
                   >
                     Mix
                   </button>
@@ -226,7 +221,7 @@ const page = () => {
                     value={props.values.more}
                     name='more'
                     rows={3}
-                    className='bg-[#EAEAEA]/20 w-full resize-none focus:outline-none rounded-md p-1 px-2'
+                    className='bb-input w-full resize-none'
                   ></textarea>
                 </div>
               </div>
@@ -251,7 +246,7 @@ const page = () => {
                       </g>
                     </svg>
                   </div>
-                  <h2 className='text-white text-xs'>
+                  <h2 className='text-bybikeBlack text-xs'>
                     We will contact you as soon as possible
                   </h2>
                 </div>
@@ -259,9 +254,9 @@ const page = () => {
                 <button
                   disabled={props.isSubmitting || !props.isValid}
                   type='submit'
-                  className='bg-bybikeRed disabled:opacity-40 rounded-sm py-2 px-6 mt-6'
+                  className='bb-btn bb-btn-primary disabled:opacity-40 mt-6'
                 >
-                  SUBMIT
+                  Submit
                 </button>
               )}
             </form>

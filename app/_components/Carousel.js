@@ -1,94 +1,82 @@
 'use client';
-import cn from 'classnames';
+
 import React from 'react';
 
+const data = [
+  {
+    title: 'Tailor Made',
+    description:
+      'We customize the driver application with a special color palette and designs tailored to your brand.',
+  },
+  {
+    title: 'Online Invoice',
+    description:
+      'Our software infrastructure is fully integrated with Paraşüt, and users can view their invoices through the app.',
+  },
+  {
+    title: 'Vehicle',
+    description:
+      'Thanks to our software infrastructure, we can quickly integrate vehicles from global manufacturers such as Segway and OKAI into the system.',
+  },
+  {
+    title: 'Payment',
+    description:
+      'Instant money withdrawal is possible through our payment infrastructure. Integrations with various payment providers will be optional based on customer demand.',
+  },
+];
+
 const Carousel = ({ activeIndex, setActiveIndex }) => {
-  const data = [
-    {
-      title: 'Tailor Made',
-      description:
-        'We customize the driver application with a special color palette and designs tailored to your brand.',
-    },
-    {
-      title: 'Online Invoice',
-      description:
-        'Our software infrastructure is fully integrated with Paraşüt, and users can view their invoices through the app.',
-    },
-    {
-      title: 'Vehicle',
-      description:
-        'Thanks to our software infrastructure, we can quickly integrate vehicles from global manufacturers such as Segway and OKAI into the system.',
-    },
-    {
-      title: 'Payment',
-      description:
-        'Instant money withdrawal is possible through our payment infrastructure. Integrations with various payment providers will be optional based on customer demand.',
-    },
-  ];
-  const halfwayIndex = Math.ceil(data.length / 2);
-
-  // Usd to determine the height/spacing of each item
-  const itemHeight = 118;
-
-  // Used to determine at what point an item is moved from the top to the bottom
-  const shuffleThreshold = halfwayIndex * itemHeight;
-
-  // Used to determine which items should be visible. this prevents the "ghosting" animation
-  const visibleStyleThreshold = shuffleThreshold / 2;
-
-  const determinePlacement = (itemIndex) => {
-    // If these match, the item is active
-    if (activeIndex === itemIndex) return 0;
-
-    if (itemIndex >= halfwayIndex) {
-      if (activeIndex > itemIndex - halfwayIndex) {
-        return (itemIndex - activeIndex) * itemHeight;
-      } else {
-        return -(data.length + activeIndex - itemIndex) * itemHeight;
-      }
-    }
-
-    if (itemIndex > activeIndex) {
-      return (itemIndex - activeIndex) * itemHeight;
-    }
-
-    if (itemIndex < activeIndex) {
-      if ((activeIndex - itemIndex) * itemHeight >= shuffleThreshold) {
-        return (data.length - (activeIndex - itemIndex)) * itemHeight;
-      }
-      return -(activeIndex - itemIndex) * itemHeight;
-    }
-  };
+  const active = data[activeIndex] ?? data[0];
 
   return (
-    <section className='outer-container overflow-hidden w-[21rem] sm:w-[28rem] '>
-      <div className='carousel-wrapper overflow-hidden '>
-        <div className='carousel-inner overflow-hidden flex flex-col '>
-          {data.map((item, i) => (
+    <div className='rider-features w-full max-w-md'>
+      <div className='relative min-h-[9.5rem] sm:min-h-[8.5rem]'>
+        {data.map((item, i) => {
+          const isActive = i === activeIndex;
+          return (
             <button
-              type='button mb-10'
+              key={item.title}
+              type='button'
               onClick={() => setActiveIndex(i)}
-              className={cn('carousel-item', {
-                active: activeIndex === i,
-                visible:
-                  Math.abs(determinePlacement(i)) <= visibleStyleThreshold,
-              })}
-              key={i}
-              style={{
-                transform: `translateY(${determinePlacement(i)}px)`,
-              }}
+              aria-pressed={isActive}
+              className={`rider-feature absolute inset-0 text-left transition-[opacity,transform,filter] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] ${
+                isActive
+                  ? 'opacity-100 translate-y-0 blur-0 pointer-events-auto'
+                  : 'opacity-0 translate-y-2 blur-[2px] pointer-events-none'
+              }`}
             >
-              <h2 className='text-2xl sm:text-4xl text-center lg:text-start mb-2'>
+              <p className='bb-label mb-2'>
+                Feature {String(i + 1).padStart(2, '0')}
+              </p>
+              <h3 className='bb-title text-2xl sm:text-3xl mb-3'>
                 {item.title}
-              </h2>
-              <p className='text-center lg:text-start text-sm leading-4'>
+              </h3>
+              <p className='bb-subtitle text-sm sm:text-base max-w-[34ch]'>
                 {item.description}
               </p>
             </button>
-          ))}
-        </div>
+          );
+        })}
       </div>
-    </section>
+
+      <div className='mt-8 flex items-center gap-2' aria-hidden>
+        {data.map((item, i) => (
+          <button
+            key={`dot-${item.title}`}
+            type='button'
+            onClick={() => setActiveIndex(i)}
+            aria-label={`Show ${item.title}`}
+            className={`h-1.5 rounded-full transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] ${
+              i === activeIndex
+                ? 'w-7 bg-bybikeBlue'
+                : 'w-1.5 bg-black/15 hover:bg-black/30'
+            }`}
+          />
+        ))}
+      </div>
+
+      <p className='sr-only'>Currently viewing {active.title}</p>
+    </div>
   );
 };
 

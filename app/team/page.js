@@ -1,182 +1,167 @@
-import React from 'react';
+'use client';
+
+import Reveal from '../_components/Reveal';
+
+const leads = [
+  {
+    name: 'Burak Karataş',
+    role: 'Chief Executive Officer',
+    image: '/picture_burak.png',
+    alt: 'BURAK',
+  },
+  {
+    name: 'Emre Harbutoğlu',
+    role: 'Chief Technical Officer',
+    image: '/picture_emre_h.png',
+    alt: 'EMRE',
+  },
+  {
+    name: 'Eren Dağsuyu',
+    role: 'Chief Operation Officer',
+    image: '/picture_eren.png',
+    alt: 'EREN',
+  },
+  {
+    name: 'Emre Aslan',
+    role: 'Research and Development Manager',
+    image: '/picture_emre.png',
+    alt: 'EMRE ASLAN',
+  },
+];
+
+const team = [
+  {
+    name: 'Berkay Şenyüz',
+    role: 'Content Management Specialist',
+    image: '/picture_berkay.png',
+    alt: 'BERKAY',
+  },
+  {
+    name: 'Ata Çorumluoğlu',
+    role: 'Mechanical Engineer',
+    image: '/picture_ata.png',
+    alt: 'ATA',
+  },
+  {
+    name: 'Çağan Kutlay',
+    role: 'Mechanical Engineer',
+    image: '/picture_cagan.png',
+    alt: 'CAGAN',
+  },
+  {
+    name: 'Egehan Ceylan',
+    role: 'Electronic Design Intern',
+    image: '/picture_egehan.png',
+    alt: 'EGEHAN',
+  },
+  {
+    name: 'Tolga Selimoğlu',
+    role: 'Mechatronics Engineer',
+    image: '/picture_tolga.png',
+    alt: 'TOLGA',
+  },
+  {
+    name: 'Abdullah Belikırık',
+    role: 'Embedded Developer',
+    image: '/picture_abdullah.png',
+    alt: 'ABDULLAH',
+  },
+  {
+    name: 'Javad Khalilov',
+    role: 'Mobile Developer',
+    image: '/picture_javad.png',
+    alt: 'JAVAD',
+  },
+  {
+    name: 'Vusal İsmayilov',
+    role: 'Backend Developer',
+    image: '/picture_vusal.png',
+    alt: 'VUSAL',
+  },
+  {
+    name: 'Gökdeniz Çakır',
+    role: 'Frontend Developer',
+    image: '/picture_gokdeniz.png',
+    alt: 'GOKDENIZ',
+  },
+];
+
+const MemberCard = ({ member, delay = 0, className = '' }) => (
+  <Reveal delay={delay} className={className}>
+    <div className='team-card flex flex-col items-center'>
+      <div className='team-card__media w-28 sm:w-36 md:w-44 lg:w-52 mb-3'>
+        <img src={member.image} alt={member.alt} loading='lazy' />
+      </div>
+      <h2 className='text-sm sm:text-base font-semibold text-bybikeBlack'>
+        {member.name}
+      </h2>
+      <h3 className='text-xs text-center sm:text-sm text-bbMuted'>{member.role}</h3>
+    </div>
+  </Reveal>
+);
 
 const page = () => {
   return (
-    <main>
-      {/* TITLE */}
-      <section className='bg-bybikeBlack text-white flex flex-col gap-2 justify-center items-center h-80'>
-        <h1 className='text-3xl md:text-5xl font-medium'>
-          <span className='text-bybikeBlue'>OUR</span> TEAM
-        </h1>
-        <h3 className='italic text-base text-center w-11/12 sm:w-auto md:text-xl tracking-widest'>
-          Young and determined, with one goal in mind.
-        </h3>
+    <main className='bg-white'>
+      <section className='bb-page-hero flex flex-col gap-2 justify-center items-center h-64 sm:h-72 px-4'>
+        <Reveal>
+          <p className='bb-label mb-2'>People</p>
+          <h1 className='bb-title text-3xl md:text-5xl text-center'>
+            Our <span className='text-bybikeBlue'>team</span>
+          </h1>
+        </Reveal>
+        <Reveal delay={80}>
+          <p className='bb-subtitle text-center w-11/12 sm:w-auto md:text-lg mt-1'>
+            Young and determined, with one goal in mind.
+          </p>
+        </Reveal>
       </section>
 
-      <section>
-        <h2 className='tracking-wider text-center mt-14 text-4xl font-medium'>
-          LEADS
-        </h2>
-        <hr className='border border-bybikeBlue mt-4 mb-14' />
+      <section className='px-4 sm:px-6'>
+        <Reveal>
+          <h2 className='bb-title text-center mt-14 text-3xl sm:text-4xl'>
+            Leads
+          </h2>
+        </Reveal>
+        <Reveal delay={60}>
+          <div className='h-px bg-bybikeBlue/40 mt-4 mb-10 max-w-xs mx-auto' />
+        </Reveal>
 
-        <div className='max-w-screen grid grid-cols-2 sm:grid-cols-3 gap-8 py-10'>
-          <div className='flex flex-col items-center'>
-            <div className='w-40 md:w-60 lg:w-80 aspect-square rounded-lg overflow-hidden bg-[#585858] mb-2'>
-              <img src='/picture_burak.png' alt='BURAK' />
-            </div>
-            <h2 className='text-sm sm:text-base font-medium'>Burak Karataş</h2>
-            <h3 className='text-xs text-center sm:text-base'>
-              Chief Executive Officer
-            </h3>
-          </div>
-          <div className='flex flex-col items-center'>
-            <div className='w-40 md:w-60 lg:w-80 aspect-square rounded-lg overflow-hidden bg-[#585858] mb-2'>
-              <img src='/picture_emre_h.png' alt='EMRE' />
-            </div>
-            <h2 className='text-sm sm:text-base font-medium'>
-              Emre Harbutoğlu
-            </h2>
-            <h3 className='text-xs text-center sm:text-base'>
-              Chief Technical Officer
-            </h3>
-          </div>
-          <div className='flex flex-col items-center'>
-            <div className='w-40 md:w-60 lg:w-80 aspect-square rounded-lg overflow-hidden bg-[#585858] mb-2'>
-              <img src='/picture_eren.png' alt='EREN' />
-            </div>
-            <h2 className='text-sm sm:text-base font-medium'>Eren Dağsuyu</h2>
-            <h3 className='text-xs text-center sm:text-base'>
-              Chief Operation Officer
-            </h3>
-          </div>
-          <div className='flex flex-col sm:hidden items-center'>
-            <div className='w-40 md:w-60 lg:w-80 aspect-square rounded-lg overflow-hidden bg-[#585858] mb-2'>
-              <img src='/picture_emre.png' alt='EMRE ASLAN' />
-            </div>
-            <h2 className='text-sm sm:text-base font-medium'>Emre Aslan</h2>
-            <h3 className='text-xs text-center sm:text-base'>
-              Research and Development Manager
-            </h3>
-          </div>
-        </div>
-        <div className='sm:flex justify-center hidden'>
-          <div className='flex flex-col items-center'>
-            <div className='w-40 md:w-60 lg:w-80 aspect-square rounded-lg overflow-hidden bg-[#585858] mb-2'>
-              <img src='/picture_emre.png' alt='EMRE ASLAN' />
-            </div>
-            <h2 className='text-sm sm:text-base font-medium'>Emre Aslan</h2>
-            <h3 className='text-xs text-center sm:text-base'>
-              Research and Development Manager
-            </h3>
-          </div>
+        <div className='max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-10 py-6 place-items-center'>
+          {leads.map((member, index) => (
+            <MemberCard
+              key={member.name}
+              member={member}
+              delay={index * 70}
+              className={index === 3 ? 'sm:col-start-2' : ''}
+            />
+          ))}
         </div>
       </section>
-      <section>
-        <h2 className='tracking-wider text-center mt-14 text-4xl font-medium'>
-          TEAM
-        </h2>
-        <hr className='border border-bybikeRed' />
-        <div className='grid grid-cols-2 sm:grid-cols-3 gap-8 py-10'>
-          <div className='flex flex-col items-center'>
-            <div className='w-40 md:w-60 lg:w-80 aspect-square rounded-lg overflow-hidden bg-[#585858] mb-2'>
-              <img src='/picture_berkay.png' alt='BERKAY' />
-            </div>
-            <h2 className='text-sm sm:text-base font-medium'>Berkay Şenyüz</h2>
-            <h3 className='text-xs text-center sm:text-base'>
-              Content Management Specialist
-            </h3>
-          </div>
-          <div className='flex flex-col items-center'>
-            <div className='w-40 md:w-60 lg:w-80 aspect-square rounded-lg overflow-hidden bg-[#585858] mb-2'>
-              <img src='/picture_ata.png' alt='ATA' />
-            </div>
-            <h2 className='text-sm sm:text-base font-medium'>
-              Ata Çorumluoğlu
-            </h2>
-            <h3 className='text-xs text-center sm:text-base'>
-              Mechanical Engineer
-            </h3>
-          </div>
-          <div className='flex flex-col items-center'>
-            <div className='w-40 md:w-60 lg:w-80 aspect-square rounded-lg overflow-hidden bg-[#585858] mb-2'>
-              <img src='/picture_cagan.png' alt='CAGAN' />
-            </div>
-            <h2 className='text-sm sm:text-base font-medium'>Çağan Kutlay</h2>
-            <h3 className='text-xs text-center sm:text-base'>
-              Mechanical Engineer
-            </h3>
-          </div>
-          <div className='flex flex-col items-center'>
-            <div className='w-40 md:w-60 lg:w-80 aspect-square rounded-lg overflow-hidden bg-[#585858] mb-2'>
-              <img src='/picture_egehan.png' alt='EGEHAN' />
-            </div>
-            <h2 className='text-sm sm:text-base font-medium'>Egehan Ceylan</h2>
-            <h3 className='text-xs text-center sm:text-base'>
-              Electronic Design Intern
-            </h3>
-          </div>
-          <div className='flex flex-col items-center'>
-            <div className='w-40 md:w-60 lg:w-80 aspect-square rounded-lg overflow-hidden bg-[#585858] mb-2'>
-              <img src='/picture_tolga.png' alt='TOLGA' />
-            </div>
-            <h2 className='text-sm sm:text-base font-medium'>
-              Tolga Selimoğlu
-            </h2>
-            <h3 className='text-xs text-center sm:text-base'>
-              Mechatronics Engineer
-            </h3>
-          </div>
-          <div className='flex flex-col items-center'>
-            <div className='w-40 md:w-60 lg:w-80 aspect-square rounded-lg overflow-hidden bg-[#585858] mb-2'>
-              <img src='/picture_abdullah.png' alt='ABDULLAH' />
-            </div>
-            <h2 className='text-sm sm:text-base font-medium'>
-              Abdullah Belikırık
-            </h2>
-            <h3 className='text-xs text-center sm:text-base'>
-              Embedded Developer
-            </h3>
-          </div>
-          <div className='flex flex-col items-center'>
-            <div className='w-40 md:w-60 lg:w-80 aspect-square rounded-lg overflow-hidden bg-[#585858] mb-2'>
-              <img src='/picture_javad.png' alt='JAVAD' />
-            </div>
-            <h2 className='text-sm sm:text-base font-medium'>Javad Khalilov</h2>
-            <h3 className='text-xs text-center sm:text-base'>
-              Mobile Developer
-            </h3>
-          </div>
-          <div className='flex flex-col items-center'>
-            <div className='w-40 md:w-60 lg:w-80 aspect-square rounded-lg overflow-hidden bg-[#585858] mb-2'>
-              <img src='/picture_vusal.png' alt='VUSAL' />
-            </div>
-            <h2 className='text-sm sm:text-base font-medium'>
-              Vusal İsmayilov
-            </h2>
-            <h3 className='text-xs text-center sm:text-base'>
-              Backend Developer
-            </h3>
-          </div>
-          <div className='sm:flex hidden flex-col items-center'>
-            <div className='w-40 md:w-60 lg:w-80 aspect-square rounded-lg overflow-hidden bg-[#585858] mb-2'>
-              <img src='/picture_gokdeniz.png' alt='GOKDENIZ' />
-            </div>
-            <h2 className='text-sm sm:text-base font-medium'>Gökdeniz Çakır</h2>
-            <h3 className='text-xs text-center sm:text-base'>
-              Frontend Developer
-            </h3>
-          </div>
-        </div>
-        <div className='justify-center mb-10 flex sm:hidden'>
-          <div className='flex flex-col items-center'>
-            <div className='w-40 md:w-60 lg:w-80 aspect-square rounded-lg overflow-hidden bg-[#585858] mb-2'>
-              <img src='/picture_gokdeniz.png' alt='GOKDENIZ' />
-            </div>
-            <h2 className='text-sm sm:text-base font-medium'>Gökdeniz Çakır</h2>
-            <h3 className='text-xs text-center sm:text-base'>
-              Frontend Developer
-            </h3>
-          </div>
+
+      <section className='px-4 sm:px-6 pb-16'>
+        <Reveal>
+          <h2 className='bb-title text-center mt-14 text-3xl sm:text-4xl'>
+            Team
+          </h2>
+        </Reveal>
+        <Reveal delay={60}>
+          <div className='h-px bg-bbBorder mt-4 mb-10 max-w-xs mx-auto' />
+        </Reveal>
+
+        <div className='max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-10 py-6 place-items-center'>
+          {team.map((member, index) => (
+            <MemberCard
+              key={member.name}
+              member={member}
+              delay={index * 55}
+              className={
+                index === team.length - 1
+                  ? 'col-span-2 justify-self-center sm:col-span-1'
+                  : ''
+              }
+            />
+          ))}
         </div>
       </section>
     </main>

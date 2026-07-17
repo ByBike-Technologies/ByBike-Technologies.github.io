@@ -2,211 +2,218 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { usePathname } from 'next/navigation';
+
 const Navbar = () => {
   const [selected, setSelected] = useState(null);
   const [menuOpened, setMenuOpened] = useState(false);
   const pathname = usePathname();
+
   const handleSelection = (int) => {
     if (selected === int) {
       setSelected(null);
     } else setSelected(int);
   };
 
+  const closeAll = () => {
+    setMenuOpened(false);
+    setSelected(null);
+  };
+
   return (
     <>
-      <div className='fixed z-50 w-screen select-none -mt-[5rem] bg-bybikeBlack h-[5rem] tracking-wider px-2 md:px-12 lg:px-24 font-montserrat font-[200] flex items-center justify-between text-white'>
+      <header className='fixed z-50 w-screen select-none -mt-[5rem] bg-white/95 backdrop-blur border-b border-bbBorder h-[5rem] px-3 md:px-12 lg:px-24 flex items-center justify-between text-bybikeBlack'>
         <Link
-          onClick={() => {
-            setMenuOpened(false);
-            setSelected(null);
-          }}
+          onClick={closeAll}
           href='/'
-          className='ml-3 mt-1 sm:ml-0 font-azonix text-2xl'
+          className='ml-2 sm:ml-0 font-azonix text-2xl tracking-wide text-bybikeBlack'
         >
-          BYBIKE
+          BY<span className='text-bybikeBlue'>BIKE</span>
         </Link>
-        <div className='flex items-center gap-2'>
-          <div
-            onClick={() => setMenuOpened(!menuOpened)}
-            className={`mr-4 transition-all duration-300 rounded-md cursor-pointer sm:hidden`}
-          >
-            <svg
-              className='overflow-visible'
-              width='28'
-              height='16'
-              viewBox='0 0 28 16'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <line
-                className={`${
-                  menuOpened ? 'rotate-45 -translate-y-[0.3rem]' : null
-                } origin-left duration-500 transition-all`}
-                y1='1'
-                x2='28'
-                y2='1'
-                stroke='#EADAFF'
-                strokeWidth='2'
-              />
-              <line
-                className={`${
-                  menuOpened ? 'opacity-0' : null
-                } duration-300 transition-all`}
-                y1='8'
-                x2='28'
-                y2='8'
-                stroke='#EADAFF'
-                strokeWidth='2'
-              />
-              <line
-                className={`${
-                  menuOpened ? '-rotate-45 translate-y-[0.3rem]' : null
-                } origin-left duration-500 transition-all`}
-                y1='15'
-                x2='28'
-                y2='15'
-                stroke='#EADAFF'
-                strokeWidth='2'
-              />
-            </svg>
-          </div>
-        </div>
-        <div className='absolute right-10 z-10'></div>
-        <div className='hidden sm:flex items-center gap-4 lg:gap-8'>
+
+        <button
+          type='button'
+          aria-label='Toggle menu'
+          onClick={() => setMenuOpened(!menuOpened)}
+          className='mr-2 sm:hidden p-2 rounded-full border border-bbBorder'
+        >
+          <svg width='22' height='14' viewBox='0 0 28 16' fill='none'>
+            <line
+              className={`${
+                menuOpened ? 'rotate-45 -translate-y-[0.3rem]' : ''
+              } origin-left duration-300 transition-transform`}
+              y1='1'
+              x2='28'
+              y2='1'
+              stroke='#0B0E13'
+              strokeWidth='2'
+            />
+            <line
+              className={`${
+                menuOpened ? 'opacity-0' : ''
+              } duration-200 transition-opacity`}
+              y1='8'
+              x2='28'
+              y2='8'
+              stroke='#0B0E13'
+              strokeWidth='2'
+            />
+            <line
+              className={`${
+                menuOpened ? '-rotate-45 translate-y-[0.3rem]' : ''
+              } origin-left duration-300 transition-transform`}
+              y1='15'
+              x2='28'
+              y2='15'
+              stroke='#0B0E13'
+              strokeWidth='2'
+            />
+          </svg>
+        </button>
+
+        <nav className='hidden sm:flex items-center gap-3 lg:gap-6 text-sm font-medium'>
           <div
             onClick={() => handleSelection(1)}
-            className='p-1 relative flex items-center gap-2 cursor-pointer'
+            className='relative flex items-center gap-1.5 cursor-pointer px-2 py-1 text-bbMuted hover:text-bybikeBlack'
           >
             Products
             <svg
-              className={`transition-all ${selected === 1 ? 'rotate-180' : ''}`}
-              width='17'
-              height='10'
+              className={`transition-transform ${
+                selected === 1 ? 'rotate-180' : ''
+              }`}
+              width='12'
+              height='8'
               viewBox='0 0 17 10'
               fill='none'
             >
               <path
                 d='M1.00008 1.00008L8.29325 8.29289M16.2932 1L8.29325 9'
-                stroke='white'
+                stroke='currentColor'
               />
             </svg>
             <div
-              className={`absolute z-0 flex flex-col gap-[2px] transition-all ${
+              className={`absolute left-0 top-full mt-3 flex flex-col gap-1 min-w-[11rem] transition-all ${
                 selected === 1
-                  ? 'translate-y-[6.2rem]'
-                  : 'opacity-0 pointer-events-none'
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 pointer-events-none -translate-y-1'
               }`}
             >
               <Link
-                onClick={() => setSelected(false)}
+                onClick={closeAll}
                 href='/software'
-                className={`${
+                className={`bb-card px-4 py-3 text-sm ${
                   pathname === '/software'
-                    ? 'bg-white border-black  text-black font-medium'
-                    : 'bg-bybikeBlack border-white text-white'
-                } flex text-center border rounded-md items-center leading-5 h-14 px-4`}
+                    ? 'border-bybikeBlue text-bybikeBlue'
+                    : 'text-bybikeBlack'
+                }`}
               >
                 Software Solutions
               </Link>
               <Link
-                onClick={() => setSelected(false)}
+                onClick={closeAll}
                 href='/e-dock'
-                className={`${
+                className={`bb-card px-4 py-3 text-sm ${
                   pathname === '/e-dock'
-                    ? 'bg-white border-black text-black font-medium'
-                    : 'bg-bybikeBlack border-white text-white'
-                } flex text-center border rounded-md items-center leading-5 h-14 px-4`}
+                    ? 'border-bybikeBlue text-bybikeBlue'
+                    : 'text-bybikeBlack'
+                }`}
               >
                 E-Dock
               </Link>
             </div>
           </div>
+
           <Link
-            onClick={() => setSelected(false)}
+            onClick={closeAll}
             href='/pricing'
-            className='p-1'
+            className={`px-2 py-1 ${
+              pathname === '/pricing'
+                ? 'text-bybikeBlue'
+                : 'text-bbMuted hover:text-bybikeBlack'
+            }`}
           >
             Pricing
           </Link>
+
           <div
             onClick={() => handleSelection(2)}
-            className='p-1 relative flex items-center gap-2 cursor-pointer'
+            className='relative flex items-center gap-1.5 cursor-pointer px-2 py-1 text-bbMuted hover:text-bybikeBlack'
           >
             Company
             <svg
-              className={`transition-all ${
-                selected === 2 ? 'rotate-180' : null
+              className={`transition-transform ${
+                selected === 2 ? 'rotate-180' : ''
               }`}
-              width='17'
-              height='10'
+              width='12'
+              height='8'
               viewBox='0 0 17 10'
               fill='none'
             >
               <path
                 d='M1.00008 1.00008L8.29325 8.29289M16.2932 1L8.29325 9'
-                stroke='white'
+                stroke='currentColor'
               />
             </svg>
             <div
-              className={`absolute z-0 flex flex-col gap-[2px] transition-all ${
+              className={`absolute left-0 top-full mt-3 flex flex-col gap-1 min-w-[10rem] transition-all ${
                 selected === 2
-                  ? 'translate-y-[6.2rem]'
-                  : 'opacity-0 pointer-events-none'
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 pointer-events-none -translate-y-1'
               }`}
             >
               <Link
-                onClick={() => setSelected(false)}
+                onClick={closeAll}
                 href='/about-us'
-                className={`${
+                className={`bb-card px-4 py-3 text-sm ${
                   pathname === '/about-us'
-                    ? 'bg-white border-black text-black font-medium'
-                    : 'bg-bybikeBlack border-white text-white'
-                } flex text-center  border rounded-md items-center leading-5 h-14 px-4`}
+                    ? 'border-bybikeBlue text-bybikeBlue'
+                    : 'text-bybikeBlack'
+                }`}
               >
                 About Us
               </Link>
               <Link
-                onClick={() => setSelected(false)}
+                onClick={closeAll}
                 href='/team'
-                className={`${
+                className={`bb-card px-4 py-3 text-sm ${
                   pathname === '/team'
-                    ? 'bg-white border-black text-black font-medium'
-                    : 'bg-bybikeBlack border-white text-white'
-                } flex text-center  border rounded-md items-center leading-5 h-14 px-4`}
+                    ? 'border-bybikeBlue text-bybikeBlue'
+                    : 'text-bybikeBlack'
+                }`}
               >
                 Our Team
               </Link>
             </div>
           </div>
-          <Link
-            onClick={() => setSelected(false)}
-            href='/demo'
-            className='bg-bybikeBlue text-white py-2 px-4 font-medium rounded-lg'
-          >
+
+          <Link href='/demo' onClick={closeAll} className='bb-btn bb-btn-teal'>
             Request a Demo
           </Link>
-        </div>
-      </div>
+        </nav>
+      </header>
+
       <div
         className={`${
           menuOpened ? 'opacity-100' : 'hidden opacity-0'
-        } sm:hidden text-white transition-all flex justify-center items-center h-screen inset-0 z-50 mt-[5rem] fixed bg-bybikeBlack`}
+        } sm:hidden transition-opacity flex justify-center items-center h-[100dvh] inset-0 z-50 mt-[5rem] fixed bg-white`}
       >
-        <div className='h-1/2 flex flex-col text-xl items-center gap-10'>
-          <Link onClick={() => setMenuOpened(false)} href='/software'>
+        <div className='flex flex-col text-lg font-medium items-center gap-6 text-bybikeBlack'>
+          <Link onClick={closeAll} href='/software'>
             Software Solutions
           </Link>
-          <Link onClick={() => setMenuOpened(false)} href='/e-dock'>
+          <Link onClick={closeAll} href='/e-dock'>
             E-Dock
           </Link>
-          <Link onClick={() => setMenuOpened(false)} href='/pricing'>
+          <Link onClick={closeAll} href='/pricing'>
             Pricing
           </Link>
-          <Link onClick={() => setMenuOpened(false)} href='/about-us'>
+          <Link onClick={closeAll} href='/about-us'>
             About Us
           </Link>
-          <Link onClick={() => setMenuOpened(false)} href='/team'>
+          <Link onClick={closeAll} href='/team'>
             Our Team
+          </Link>
+          <Link onClick={closeAll} href='/demo' className='bb-btn bb-btn-teal mt-2'>
+            Request a Demo
           </Link>
         </div>
       </div>
