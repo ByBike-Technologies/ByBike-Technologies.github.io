@@ -64,12 +64,6 @@ const rdTeam = [
 
 const softwareTeam = [
   {
-    name: 'Berkay Şenyüz',
-    role: 'Content Management Specialist',
-    image: '/picture_berkay.png',
-    alt: 'Berkay Şenyüz',
-  },
-  {
     name: 'Javad Khalilov',
     role: 'Mobile Developer',
     image: '/picture_javad.png',
